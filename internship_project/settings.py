@@ -38,9 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-
-    #myapps
-    'courses',
+    'courses.apps.CoursesConfig',
 ]
 
 MIDDLEWARE = [
@@ -80,7 +78,7 @@ WSGI_APPLICATION = 'internship_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'internship_db',
+        'NAME': 'academy_db',
         'USER': 'hello',
         'PASSWORD': '1',
         'HOST': 'localhost',
