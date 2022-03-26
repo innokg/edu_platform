@@ -6,10 +6,10 @@ class Courses(models.Model):
     title_of_courses = models.CharField(max_length=150, verbose_name='Название курса')
     dates_of_event = models.DateTimeField(auto_now_add=True, verbose_name='Дата проведения')
     mentor = models.CharField(max_length=255, verbose_name='Ментор')
-    subthemes_id = models.ForeignKey('Subthemes', on_delete=models.CASCADE)
-    lessons_block_id = models.ForeignKey('LessonsBlock', on_delete=models.CASCADE)
-    lessons_list_id = models.ForeignKey('LessonsList', on_delete=models.CASCADE)
-    hometasks_list_id = models.ForeignKey('Hometasks', on_delete=models.CASCADE)
+    subthemes_id = models.ForeignKey('Subthemes', on_delete=models.CASCADE, verbose_name='Подтемы', blank=True, null=True)
+    lessons_block_id = models.ForeignKey('LessonsBlock', on_delete=models.CASCADE, verbose_name='Блок занятий', blank=True, null=True)
+    lessons_list_id = models.ForeignKey('LessonsList', on_delete=models.CASCADE, verbose_name='Список уроков', blank=True, null=True)
+    hometasks_list_id = models.ForeignKey('Hometasks', on_delete=models.CASCADE, verbose_name='Список ДЗ', blank=True, null=True)
     course_completion_rate = models.IntegerField(blank=True, verbose_name='Процент освоения темы')
 
 class Subthemes(models.Model):
