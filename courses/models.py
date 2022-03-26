@@ -7,7 +7,7 @@ class Courses(models.Model):
     dates_of_event = models.DateTimeField(auto_now_add=True, verbose_name='Дата проведения')
     mentor = models.CharField(max_length=255, verbose_name='Ментор')
     subthemes_id = models.ForeignKey('Subthemes', on_delete=models.CASCADE)
-    lessons_block_id = models.ForeignKey('LessonsBlock', on_delete=models.CASCADE )
+    lessons_block_id = models.ForeignKey('LessonsBlock', on_delete=models.CASCADE)
     lessons_list_id = models.ForeignKey('LessonsList', on_delete=models.CASCADE)
     hometasks_list_id = models.ForeignKey('Hometasks', on_delete=models.CASCADE)
     course_completion_rate = models.IntegerField(blank=True, verbose_name='Процент освоения темы')
