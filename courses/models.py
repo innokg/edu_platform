@@ -3,7 +3,7 @@ from django.db import models
 
 
 class Courses(models.Model):
-    title_of_courses = models.CharField(max_length=150, verbose_name='Название курса')
+    title_of_courses = models.CharField(max_length=150, verbose_name='Название курса', unique=True)
     dates_of_event = models.DateTimeField(auto_now_add=True, verbose_name='Дата проведения')
     mentor = models.CharField(max_length=255, verbose_name='Ментор')
     subthemes_id = models.ForeignKey('Subthemes', on_delete=models.CASCADE, verbose_name='Подтемы', blank=True, null=True)
@@ -11,6 +11,7 @@ class Courses(models.Model):
     lessons_list_id = models.ForeignKey('LessonsList', on_delete=models.CASCADE, verbose_name='Список уроков', blank=True, null=True)
     hometasks_list_id = models.ForeignKey('Hometasks', on_delete=models.CASCADE, verbose_name='Список ДЗ', blank=True, null=True)
     course_completion_rate = models.IntegerField(blank=True, verbose_name='Процент освоения темы')
+
 
 class Subthemes(models.Model):
     subtheme_title = models.CharField(max_length=255, verbose_name='Название подтемы')
@@ -23,6 +24,7 @@ class LessonsBlock(models.Model):
     lessons_title = models.CharField(max_length=250, verbose_name='Уроки')
     goals_at_the_end = models.TextField(blank=True, verbose_name='Цель по окончании')
 
+
 class Lesson(models.Model):
     motivation = models.TextField(blank=True, verbose_name='Мотивация')
     actualization = models.TextField(blank=True, verbose_name='Актуализация')
@@ -33,6 +35,7 @@ class Lesson(models.Model):
     course_id = models.ForeignKey('Courses', on_delete=models.PROTECT)
     group = models.CharField(max_length=150, verbose_name='Название группы')
     lessons_block_id = models.ForeignKey('LessonsBlock',  on_delete=models.PROTECT)
+
 
 class LessonsList(models.Model):
     date_of_lesson = models.DateTimeField(auto_now_add=True, verbose_name='Дата')
@@ -54,6 +57,7 @@ class Hometasks(models.Model):
     lessons_id = models.ForeignKey('Lesson', on_delete=models.PROTECT)
     topics = models.CharField(max_length=250, verbose_name='Темы')
     task = models.TextField(blank=True, verbose_name='Задание')
+
 
 class Examination(models.Model):
     date_of_exam = models.DateTimeField(auto_now_add=True, verbose_name='Дата экзамена')
