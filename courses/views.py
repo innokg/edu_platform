@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework import  filters
 from courses.serializers import CoursesSerializer
 from courses.models import *
-from rest_framework.generics import  ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 
 # Create your views here.
 
