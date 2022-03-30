@@ -1,8 +1,11 @@
+"""
+standart models for educational project
+"""
 from django.db import models
 
 
-
 class Courses(models.Model):
+    """Class for courses"""
     title_of_courses = models.CharField(
         max_length=150,
         verbose_name='Название курса',
@@ -36,9 +39,11 @@ class Courses(models.Model):
     course_completion_rate = models.IntegerField(
         blank=True,
         verbose_name='Процент освоения темы')
+    objects = models.Manager()
 
 
 class Subthemes(models.Model):
+    """Class for subthemes of courses"""
     subtheme_title = models.CharField(
         max_length=255,
         verbose_name='Название подтемы')
@@ -47,13 +52,14 @@ class Subthemes(models.Model):
         on_delete=models.PROTECT)
     comments = models.TextField(
         blank=True,
-        verbose_name='Комментарии' )
+        verbose_name='Комментарии')
     lessons_block_id = models.ForeignKey(
         'LessonsBlock',
         on_delete=models.PROTECT)
 
 
 class LessonsBlock(models.Model):
+    """Class for block of lessons"""
     number_of_lessons = models.IntegerField(
         unique=True,
         verbose_name='Номер блока')
@@ -66,6 +72,7 @@ class LessonsBlock(models.Model):
 
 
 class Lesson(models.Model):
+    """Class for Lessons"""
     motivation = models.TextField(
         blank=True,
         verbose_name='Мотивация')
@@ -96,6 +103,7 @@ class Lesson(models.Model):
 
 
 class LessonsList(models.Model):
+    """Class for list of lessons"""
     date_of_lesson = models.DateTimeField(
         auto_now_add=True,
         verbose_name='Дата')
@@ -108,6 +116,7 @@ class LessonsList(models.Model):
 
 
 class Glossary(models.Model):
+    """Class for lessons list"""
     terms_blocks = models.CharField(
         max_length=250,
         verbose_name='Блок терминов')
@@ -129,6 +138,7 @@ class Glossary(models.Model):
 
 
 class Hometasks(models.Model):
+    """Class for hometasks"""
     date = models.DateTimeField(
         auto_now_add=True,
         verbose_name='Дата')
@@ -144,6 +154,7 @@ class Hometasks(models.Model):
 
 
 class Examination(models.Model):
+    """Class for exams"""
     date_of_exam = models.DateTimeField(
         auto_now_add=True,
         verbose_name='Дата экзамена')
