@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'drf_yasg',
+    'corsheaders',
     #myapps
     'courses.apps.CoursesConfig',
 
@@ -141,3 +142,7 @@ SWAGGER_SETTINGS = {
         }
     }
 }
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
+]
