@@ -10,30 +10,29 @@ class Courses(models.Model):
         max_length=150,
         verbose_name='Название курса',
         unique=True)
-    dates_of_event = models.DateTimeField(
-        auto_now_add=True,
+    dates_of_event = models.DateField(
         verbose_name='Дата проведения')
     mentor = models.CharField(
         max_length=255,
         verbose_name='Ментор')
     subthemes_id = models.ForeignKey(
         'Subthemes',
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         verbose_name='Подтемы',
         blank=True, null=True)
     lessons_block_id = models.ForeignKey(
         'LessonsBlock',
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         verbose_name='Блок занятий',
         blank=True, null=True)
     lessons_list_id = models.ForeignKey(
         'LessonsList',
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         verbose_name='Список уроков',
         blank=True, null=True)
     hometasks_list_id = models.ForeignKey(
         'Hometasks',
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         verbose_name='Список ДЗ',
         blank=True, null=True)
     course_completion_rate = models.IntegerField(
@@ -88,8 +87,7 @@ class Lesson(models.Model):
     comments = models.TextField(
         blank=True,
         verbose_name='Комментарии')
-    date_of_lesson = models.DateTimeField(
-        auto_now_add=True,
+    date_of_lesson = models.DateField(
         verbose_name='Дата занятия')
     course_id = models.ForeignKey(
         'Courses',
@@ -104,8 +102,7 @@ class Lesson(models.Model):
 
 class LessonsList(models.Model):
     """Class for list of lessons"""
-    date_of_lesson = models.DateTimeField(
-        auto_now_add=True,
+    date_of_lesson = models.DateField(
         verbose_name='Дата')
     lesson = models.TextField(
         blank=True,
@@ -139,8 +136,7 @@ class Glossary(models.Model):
 
 class Hometasks(models.Model):
     """Class for hometasks"""
-    date = models.DateTimeField(
-        auto_now_add=True,
+    date_of_hometasks = models.DateField(
         verbose_name='Дата')
     lessons_id = models.ForeignKey(
         'Lesson',
@@ -155,14 +151,13 @@ class Hometasks(models.Model):
 
 class Examination(models.Model):
     """Class for exams"""
-    date_of_exam = models.DateTimeField(
-        auto_now_add=True,
+    date_of_exam = models.DateField(
         verbose_name='Дата экзамена')
     recomendations = models.TextField(
         blank=True,
         verbose_name='Общие рекомендации')
-    execution_time = models.DateTimeField(
-        auto_now_add=True,
+    execution_time = models.DateField(
+
         verbose_name='Время выполнения')
     lessonsblock_id = models.ForeignKey(
         'LessonsBlock',
