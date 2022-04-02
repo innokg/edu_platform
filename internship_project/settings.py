@@ -149,4 +149,8 @@ SWAGGER_SETTINGS = {
     }
 }
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 django_heroku.settings(locals())
