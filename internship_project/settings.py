@@ -142,6 +142,7 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
+Access-Control-Allow-Origin: *
 
 SWAGGER_SETTINGS = {
     'SECURITY_DEFINITIONS': {
